@@ -512,4 +512,3 @@ Token Token::WHILE = Token("while", 32);
 void Analysis() {
     Java_LexAnalysis::main();
 };
-
