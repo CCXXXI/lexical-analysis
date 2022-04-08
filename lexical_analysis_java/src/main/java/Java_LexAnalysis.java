@@ -414,8 +414,8 @@ class Token {
   }
 
   private static class TokenType {
-    private static final int Comment = 79;
-    private static final int Constant = 80;
-    private static final int Identifier = 81;
+    public static final int Comment = 79;
+    public static final int Constant = 80;
+    public static final int Identifier = 81;
   }
 }
