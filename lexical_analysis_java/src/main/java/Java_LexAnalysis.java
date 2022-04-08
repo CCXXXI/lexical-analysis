@@ -24,5 +24,7 @@ public class Java_LexAnalysis {
    *
    * @param args
    */
-  public static void main(String[] args) { analysis(); }
+  public static void main(String[] args) {
+    analysis();
+  }
 }
