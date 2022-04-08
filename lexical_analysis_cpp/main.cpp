@@ -246,151 +246,151 @@ public:
         char preChar = curChar;
         nextChar();
         switch (preChar) {
+        case '-':
+            switch (curChar) {
             case '-':
-                switch (curChar) {
-                    case '-':
-                        nextChar();
-                        return Token::MINUS_MINUS;
-                    case '=':
-                        nextChar();
-                        return Token::MINUS_EQ;
-                    case '>':
-                        nextChar();
-                        return Token::ARROW;
-                    default:
-                        return Token::MINUS;
-                }
-            case '!':
-                if (curChar == '=') {
-                    nextChar();
-                    return Token::NOT_EQ;
-                }
-                return Token::NOT;
-            case '%':
-                if (curChar == '=') {
-                    nextChar();
-                    return Token::MOD_EQ;
-                }
-                return Token::MOD;
-            case '&':
-                switch (curChar) {
-                    case '&':
-                        nextChar();
-                        return Token::AND_AND;
-                    case '=':
-                        nextChar();
-                        return Token::AND_EQ;
-                    default:
-                        return Token::AND;
-                }
-            case '(':
-                return Token::L_PAREN;
-            case ')':
-                return Token::R_PAREN;
-            case '*':
-                if (curChar == '=') {
-                    nextChar();
-                    return Token::MUL_EQ;
-                }
-                return Token::MUL;
-            case ',':
-                return Token::COMMA;
-            case '.':
-                return Token::DOT;
-            case '/':
-                switch (curChar) {
-                    case '=':
-                        nextChar();
-                        return Token::DIV_EQ;
-                    case '/':
-                        nextChar();
-                        return handleSingleLineComment();
-                    case '*':
-                        nextChar();
-                        return handleMultiLineComment();
-                    default:
-                        return Token::DIV;
-                }
-            case ':':
-                return Token::COLON;
-            case ';':
-                return Token::SEMICOLON;
-            case '?':
-                return Token::QUESTION;
-            case '[':
-                return Token::L_BRACKET;
-            case ']':
-                return Token::R_BRACKET;
-            case '^':
-                if (curChar == '=') {
-                    nextChar();
-                    return Token::XOR_EQ;
-                }
-                return Token::XOR;
-            case '{':
-                return Token::L_BRACE;
-            case '|':
-                switch (curChar) {
-                    case '|':
-                        nextChar();
-                        return Token::OR_OR;
-                    case '=':
-                        nextChar();
-                        return Token::OR_EQ;
-                    default:
-                        return Token::OR;
-                }
-            case '}':
-                return Token::R_BRACE;
-            case '~':
-                return Token::BIT_NOT;
-            case '+':
-                switch (curChar) {
-                    case '+':
-                        nextChar();
-                        return Token::PLUS_PLUS;
-                    case '=':
-                        nextChar();
-                        return Token::PLUS_EQ;
-                    default:
-                        return Token::PLUS;
-                }
-            case '<':
-                switch (curChar) {
-                    case '<':
-                        nextChar();
-                        if (curChar == '=') {
-                            nextChar();
-                            return Token::SHL_EQ;
-                        }
-                        return Token::SHL;
-                    case '=':
-                        nextChar();
-                        return Token::LE;
-                    default:
-                        return Token::LT;
-                }
+                nextChar();
+                return Token::MINUS_MINUS;
             case '=':
+                nextChar();
+                return Token::MINUS_EQ;
+            case '>':
+                nextChar();
+                return Token::ARROW;
+            default:
+                return Token::MINUS;
+            }
+        case '!':
+            if (curChar == '=') {
+                nextChar();
+                return Token::NOT_EQ;
+            }
+            return Token::NOT;
+        case '%':
+            if (curChar == '=') {
+                nextChar();
+                return Token::MOD_EQ;
+            }
+            return Token::MOD;
+        case '&':
+            switch (curChar) {
+            case '&':
+                nextChar();
+                return Token::AND_AND;
+            case '=':
+                nextChar();
+                return Token::AND_EQ;
+            default:
+                return Token::AND;
+            }
+        case '(':
+            return Token::L_PAREN;
+        case ')':
+            return Token::R_PAREN;
+        case '*':
+            if (curChar == '=') {
+                nextChar();
+                return Token::MUL_EQ;
+            }
+            return Token::MUL;
+        case ',':
+            return Token::COMMA;
+        case '.':
+            return Token::DOT;
+        case '/':
+            switch (curChar) {
+            case '=':
+                nextChar();
+                return Token::DIV_EQ;
+            case '/':
+                nextChar();
+                return handleSingleLineComment();
+            case '*':
+                nextChar();
+                return handleMultiLineComment();
+            default:
+                return Token::DIV;
+            }
+        case ':':
+            return Token::COLON;
+        case ';':
+            return Token::SEMICOLON;
+        case '?':
+            return Token::QUESTION;
+        case '[':
+            return Token::L_BRACKET;
+        case ']':
+            return Token::R_BRACKET;
+        case '^':
+            if (curChar == '=') {
+                nextChar();
+                return Token::XOR_EQ;
+            }
+            return Token::XOR;
+        case '{':
+            return Token::L_BRACE;
+        case '|':
+            switch (curChar) {
+            case '|':
+                nextChar();
+                return Token::OR_OR;
+            case '=':
+                nextChar();
+                return Token::OR_EQ;
+            default:
+                return Token::OR;
+            }
+        case '}':
+            return Token::R_BRACE;
+        case '~':
+            return Token::BIT_NOT;
+        case '+':
+            switch (curChar) {
+            case '+':
+                nextChar();
+                return Token::PLUS_PLUS;
+            case '=':
+                nextChar();
+                return Token::PLUS_EQ;
+            default:
+                return Token::PLUS;
+            }
+        case '<':
+            switch (curChar) {
+            case '<':
+                nextChar();
                 if (curChar == '=') {
                     nextChar();
-                    return Token::EQ_EQ;
+                    return Token::SHL_EQ;
                 }
-                return Token::EQ;
+                return Token::SHL;
+            case '=':
+                nextChar();
+                return Token::LE;
+            default:
+                return Token::LT;
+            }
+        case '=':
+            if (curChar == '=') {
+                nextChar();
+                return Token::EQ_EQ;
+            }
+            return Token::EQ;
+        case '>':
+            switch (curChar) {
+            case '=':
+                nextChar();
+                return Token::GE;
             case '>':
-                switch (curChar) {
-                    case '=':
-                        nextChar();
-                        return Token::GE;
-                    case '>':
-                        nextChar();
-                        if (curChar == '=') {
-                            nextChar();
-                            return Token::SHR_EQ;
-                        }
-                        return Token::SHR;
-                    default:
-                        return Token::GT;
+                nextChar();
+                if (curChar == '=') {
+                    nextChar();
+                    return Token::SHR_EQ;
                 }
+                return Token::SHR;
+            default:
+                return Token::GT;
+            }
         }
     }
 
